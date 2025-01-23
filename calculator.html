@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DHRUVANG Calculator</title>
+    <style>
+        /* General body and alignment */
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 110vh;
+            margin: 20;
+            background-color: #18a1ea;
+            
+        }
+
+        /* Calculator container */
+        .calculator {
+            background-color: #2a2727;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(12, 1, 1, 0.1);
+            padding: 20px;
+            width: 300px;
+            
+        }
+
+        /* Display screen */
+        #display {
+            width: 90%;
+            height: 60px;
+            font-size: 30px;
+            text-align: right;
+            padding: 10px;
+            border: 1px solid #f9f9f9;
+            border-radius: 5px;
+            background-color: #fcf9f9;
+            margin-bottom: 20px;
+        }
+
+        /* Button grid layout */
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            font-size: 20px;
+            padding: 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        button:active {
+            background-color: #388e3c;
+        }
+
+        .btn-clear {
+            background-color: #f44336;
+        }
+
+        .btn-equal {
+            background-color: #2196F3;
+        }
+
+        .btn-equal:hover {
+            background-color: #1976D2;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="calculator">
+        <!-- Display Screen -->
+        <input type="text" id="display" disabled />
+
+        <!-- Calculator Buttons -->
+        <div class="buttons">
+            <button onclick="appendValue('7')">7</button>
+            <button onclick="appendValue('8')">8</button>
+            <button onclick="appendValue('9')">9</button>
+            <button onclick="appendValue('+')">+</button>
+
+            <button onclick="appendValue('4')">4</button>
+            <button onclick="appendValue('5')">5</button>
+            <button onclick="appendValue('6')">6</button>
+            <button onclick="appendValue('-')">-</button>
+
+            <button onclick="appendValue('1')">1</button>
+            <button onclick="appendValue('2')">2</button>
+            <button onclick="appendValue('3')">3</button>
+            <button onclick="appendValue('*')">x</button>
+
+            <button onclick="appendValue('0')">0</button>
+            <button onclick="clearDisplay()" class="btn-clear">C</button>
+            <button onclick="calculateResult()" class="btn-equal">=</button>
+            <button onclick="appendValue('/')">/</button>
+        </div>
+    </div>
+
+    <script>
+        let currentInput = "";
+
+        // Function to append values (numbers or operators) to the display
+        function appendValue(value) {
+            currentInput += value;
+            document.getElementById("display").value = currentInput;
+        }
+
+        // Function to clear the display
+        function clearDisplay() {
+            currentInput = "";
+            document.getElementById("display").value = currentInput;
+        }
+
+        // Function to calculate the result of the expression
+        function calculateResult() {
+            try {
+                currentInput = eval(currentInput).toString();
+                document.getElementById("display").value = currentInput;
+            } catch (e) {
+                document.getElementById("display").value = "Error";
+                currentInput = "";
+            }
+        }
+    </script>
+    <!-- don't forget to give me rating , as a 1st year student i have made this using some basic html and try to get more information  -->
+<!-- you can contact me my insta id dhruvang_bari_28 -->
+</body>
+</html>
